@@ -2,15 +2,15 @@
   <div class="home">
     <div class="wrapper">
       <drag
-        v-for="n in items"
+        v-for="(n, index) in items"
         class="drag"
         :key="n.id"
         :data="n.id"
-        :style="{top: n.x+'px', left: n.y+'px', height: '100px', position: 'absolute', zIndex: n.id}"
-        @dragstart="dragend"
-        @dragend="dragstart"
+        :style="{top: n.y+'px', left: n.x+'px', height: '100px', position: 'absolute', zIndex: index}"
+        @dragstart="dragstart"
+        @dragend="dragend"
       >
-        <block-component />
+        <block-component :title="n.title" />
       </drag>
       <drop class="grid" @drop="drop"></drop>
     </div>
@@ -46,28 +46,27 @@ export default {
   data() {
     return {
       items: [
-        { x: 0, y: 0, id: 1 },
-        { x: 10, y: 10, id: 2 },
-        { x: 20, y: 20, id: 3 },
-        { x: 30, y: 30, id: 4 },
-        { x: 40, y: 40, id: 5 },
+        { x: 0, y: 0, id: 1, title: 'Title 1' },
+        { x: 10, y: 10, id: 2, title: 'Title 2' },
+        { x: 20, y: 20, id: 3, title: 'Title 3' },
+        { x: 30, y: 30, id: 4, title: 'Title 4' },
+        { x: 40, y: 40, id: 5, title: 'Title 5' },
       ],
       dragging: false,
     };
   },
   methods: {
     dragend(event) {
-      if (event.data === 1) {
-        console.log(event);
-        this.dragging = false;
-      }
+      console.log(event)
+      this.dragging = false;
+      const block = this.items.find(item => item.id === event.data);
+      block.x = /* parseInt( */event.position.x/*  / 10, 10) * 10 */
+      block.y = /* parseInt( */event.position.y/*  / 10, 10) * 10 */
     },
     dragstart(event) {
-        console.log(event, event.data);
-      if (event.data === 1) {
-        console.log(event);
-        this.dragging = event.data;
-      }
+      const block = this.items.find(item => item.id === event.data);
+      this.items = [block, ...this.items.filter(item => item.id !== block.id)]
+      this.dragging = event.data;
     },
     drop(event) {
       console.log(event);

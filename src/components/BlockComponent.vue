@@ -2,11 +2,14 @@
   <div class="wrapper">
     <div class="header">
       <div v-if="isLabel" class="header__pull-area" />
-      <div class="header__sign-wrapper" @click="isBlockInfo = !isBlockInfo">
-        <font-awesome-icon :icon="faCaretDown" />
-      </div>
-      <div class="header__sign-wrapper" @click="closeBlock">
-        <font-awesome-icon :icon="faTimes" />
+      {{title}}
+      <div class="header__actions">
+        <div class="header__sign-wrapper" @click="isBlockInfo = !isBlockInfo">
+          <font-awesome-icon :icon="faCaretDown" />
+        </div>
+        <div class="header__sign-wrapper" @click="closeBlock">
+          <font-awesome-icon :icon="faTimes" />
+        </div>
       </div>
     </div>
     <div v-if="isBlockInfo" class="block-info"></div>
@@ -25,6 +28,7 @@ export default {
     height: Number,
     width: Number,
     isCollapsed: Boolean,
+    isLabel: Boolean,
     // coordinates: {
     //   x: Number,
     //   y: Number,
@@ -36,7 +40,6 @@ export default {
   data() {
     return {
       isBlockInfo: false,
-      isLabel: true,
       faTimes,
       faCaretDown,
     };
@@ -61,10 +64,10 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 50px;
     background-color: #c5cdb5;
-    padding-right: 10px;
+    padding: 0 10px;
 
     .header__sign-wrapper {
       display: flex;
@@ -90,6 +93,10 @@ export default {
       width: 30px;
       background-color: grey;
       cursor: pointer;
+    }
+
+    .header__actions {
+      display: flex;
     }
   }
 
