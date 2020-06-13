@@ -1,16 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <div class="header__pull-area"/>
-      <div class="header__sign-wrapper" @click="isBlockInfo=!isBlockInfo">
-        <font-awesome-icon  :icon="faCaretDown" />
+      <div v-if="isLabel" class="header__pull-area" />
+      <div class="header__sign-wrapper" @click="isBlockInfo = !isBlockInfo">
+        <font-awesome-icon :icon="faCaretDown" />
       </div>
       <div class="header__sign-wrapper" @click="closeBlock">
-        <font-awesome-icon  :icon="faTimes" />
+        <font-awesome-icon :icon="faTimes" />
       </div>
     </div>
-    <div v-if="isBlockInfo" class="block-info" >      
-    </div>
+    <div v-if="isBlockInfo" class="block-info"></div>
   </div>
 </template>
 
@@ -37,16 +36,17 @@ export default {
   data() {
     return {
       isBlockInfo: false,
-      faTimes, faCaretDown
+      isLabel: true,
+      faTimes,
+      faCaretDown,
     };
   },
   methods: {
     closeBlock() {
       //$store.dispatch()
     },
-  }
-
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -88,9 +88,8 @@ export default {
       height: 100%;
       width: 30px;
       background-color: grey;
-      cursor: pointer
+      cursor: pointer;
     }
-
   }
 
   .block-info {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <block-component msg="Welcome to Your Vue.js App" />
+    <block-component />
   </div>
 </template>
 
