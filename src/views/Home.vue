@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <block-component msg="Welcome to Your Vue.js App"/>
+    <block-component msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import BlockComponent from '@/components/BlockComponent.vue'
+import BlockComponent from "@/components/BlockComponent.vue";
 
 export default {
-  name: 'Default',
+  name: "Default",
   components: {
-    BlockComponent
-  }
-}
+    BlockComponent,
+  },
+};
 </script>
