@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="header">
       <div v-if="isLabel" class="header__pull-area" />
-      {{title}}
+      {{ title }}
       <div class="header__actions">
         <div class="header__sign-wrapper" @click="isBlockInfo = !isBlockInfo">
           <font-awesome-icon :icon="faCaretDown" />
@@ -58,7 +58,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 400px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
   .header {
     position: relative;
